@@ -1,10 +1,12 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 
         FamilyTree familyTree = new FamilyTree();
+
         Person nic = new Person("Nic", 1928);
         Person margo = new Person("Margo", 1937);
         Person max = new Person("Max", 1998);
@@ -32,6 +34,9 @@ public class Main {
 
         System.out.println(familyTree.findPersonByName("Nic"));
 
+//        while (iterator.hasNext()) {
+//            System.out.println(iterator.next());
+//        }
         for (int i = 0; i < 6; i++) {
             System.out.println(familyTree.getPerson(i));
         }
