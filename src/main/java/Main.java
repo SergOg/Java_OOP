@@ -40,9 +40,6 @@ public class Main {
             System.out.println(p);
         }
 
-//        for (int i = 0; i < 6; i++) {
-//            System.out.println(familyTree.getPerson(i));
-//        }
         List<Person> nicChildren = familyTree.getChildren(nic);
         for (Person child : nicChildren) {
             System.out.println("Nic's child: " + child.getName());
@@ -61,10 +58,6 @@ public class Main {
 //        for (Person child : sergParents) {
 //            System.out.println("Serg's parents: " + child.getName());
 //        }
-
-        //System.out.println("Before Serialize: " + familyTree);
-
-        //System.out.println("After Restored: " + FileOperationsImpl.familyTreeRestored);
 
 /**
  * Создаем объект для работы с файлами
