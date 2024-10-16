@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -5,9 +6,10 @@ import java.util.List;
 /**
  * Tree
  */
-public class FamilyTree {
+public class FamilyTree implements Serializable {
 
     private List<Person> people;
+    private static final long serialVersionUID = 1L;
 
     public FamilyTree() {
         this.people = new ArrayList<>();
@@ -19,6 +21,10 @@ public class FamilyTree {
 
     public Person getPerson(int i) {
         return people.get(i);
+    }
+
+    public List<Person> getPeople(){
+        return people;
     }
 
     /**

@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -5,12 +6,13 @@ import java.util.Objects;
 /**
  * Класс Люди
  */
-public class Person {
+public class Person implements Serializable {
     private String name;
     private int birthYear;
     private Person mother;
     private Person father;
     private List<Person> children;
+    private static final long serialVersionUID = 1L;
 
     public void addChild(Person child) {
         this.children.add(child);

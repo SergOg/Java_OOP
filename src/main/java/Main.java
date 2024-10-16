@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -32,14 +33,16 @@ public class Main {
         familyTree.addPerson(mary);
         familyTree.addPerson(tema);
 
-        System.out.println(familyTree.findPersonByName("Nic"));
+        ///System.out.println(familyTree.findPersonByName("Nic"));
 
-//        while (iterator.hasNext()) {
-//            System.out.println(iterator.next());
-//        }
-        for (int i = 0; i < 6; i++) {
-            System.out.println(familyTree.getPerson(i));
+        for (Person p :
+                familyTree.getPeople()) {
+            System.out.println(p);
         }
+
+//        for (int i = 0; i < 6; i++) {
+//            System.out.println(familyTree.getPerson(i));
+//        }
         List<Person> nicChildren = familyTree.getChildren(nic);
         for (Person child : nicChildren) {
             System.out.println("Nic's child: " + child.getName());
@@ -55,8 +58,42 @@ public class Main {
         List<Person> sergParents = new ArrayList<>();
         sergParents.add((Person) serg.getMother());
         sergParents.add((Person) serg.getFather());
-        for (Person child : sergParents) {
-            System.out.println("Serg's parents: " + child.getName());
+//        for (Person child : sergParents) {
+//            System.out.println("Serg's parents: " + child.getName());
+//        }
+
+        //System.out.println("Before Serialize: " + familyTree);
+
+        //System.out.println("After Restored: " + FileOperationsImpl.familyTreeRestored);
+
+/**
+ * Создаем объект для работы с файлами
+ */
+        FileOperations fileOps = new FileOperationsImpl();
+        try {
+            fileOps.saveToFile(familyTree, "familyTree.dat");
+            System.out.println("Family tree saved to file.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+/**
+ *Загружаем генеалогическое древо из файла
+ */
+        FamilyTree loadedFamilyTree = null;
+        try {
+            loadedFamilyTree = fileOps.loadFromFile("familyTree.dat");
+            System.out.println("Family tree loaded from file.");
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+/**
+ * Проверка после загрузки
+  */
+        if (loadedFamilyTree != null) {
+            for (Person p :
+                    loadedFamilyTree.getPeople()) {
+                System.out.println(p);
+            }
         }
     }
 }
