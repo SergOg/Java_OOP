@@ -59,12 +59,10 @@ public class Person implements Serializable {
 
     @Override
     public String toString() {
-        return "{" +
-                "name='" + name + '\'' +
-                ", birthYear=" + birthYear +
-                ", mother=" + mother +
-                ", father=" + father +
-                '}';
+        return String.format("{name='%s', birthYear=%d, mother=%s, father=%s}",
+                name, birthYear,
+                mother != null ? mother.getName() : "null",
+                father != null ? father.getName() : "null");
     }
 
     @Override
