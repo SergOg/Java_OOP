@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -15,12 +16,8 @@ public class FamilyTree implements Serializable {
         this.people = new ArrayList<>();
     }
 
-    void addPerson(Person person) {
-        this.people.add(person);
-    }
-
-    public Person getPerson(int i) {
-        return people.get(i);
+    public void addPerson(Person... person) {
+        this.people.addAll(Arrays.asList(person));
     }
 
     public List<Person> getPeople(){
