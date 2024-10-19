@@ -1,13 +1,14 @@
+package model;
+
+import model.Person;
+
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Tree
  */
-public class FamilyTree implements Serializable {
+public class FamilyTree implements Serializable, Iterable<Person> {
 
     private List<Person> people;
     private static final long serialVersionUID = 1L;
@@ -20,7 +21,7 @@ public class FamilyTree implements Serializable {
         this.people.addAll(Arrays.asList(person));
     }
 
-    public List<Person> getPeople(){
+    public List<Person> getPeople() {
         return people;
     }
 
@@ -45,4 +46,18 @@ public class FamilyTree implements Serializable {
         return person.getChildren();
     }
 
+    @Override
+    public Iterator<Person> iterator() {
+        return people.iterator();
+    }
+
+    public void sortByName() {
+        Collections.sort(people, (p1, p2) ->
+                p1.getName().compareTo(p2.getName()));
+    }
+
+    public void sortByBirthYear() {
+        Collections.sort(people, (p1, p2) ->
+                Integer.compare(p1.getBirthYear(), p2.getBirthYear()));
+    }
 }

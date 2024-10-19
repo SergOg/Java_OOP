@@ -1,13 +1,17 @@
+package main;
+
+import model.FamilyTree;
+import model.Person;
+import service.FileOperations;
+import service.FileOperationsImpl;
+
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 
         FamilyTree familyTree = new FamilyTree();
-
         Person nic = new Person("Nic", 1928);
         Person margo = new Person("Margo", 1937);
         Person max = new Person("Max", 1998);
@@ -15,11 +19,9 @@ public class Main {
         Person mary = new Person("Mary", 2003);
         Person tema = new Person("Tema", 2020);
 
-        establishRelations(nic, margo, serg, max, mary, tema);
-
+        establishRelations(tema, nic, margo, serg, max, mary);
         // Добавляем людей в семейное древо
-        familyTree.addPerson(nic, margo, serg, max, mary, tema);
-
+        familyTree.addPerson(tema, nic, margo, serg, max, mary);
 //        nic.addChild(serg);
 //        margo.addChild(serg);
 //        serg.setMother(margo);
@@ -44,23 +46,22 @@ public class Main {
                 familyTree.getPeople()) {
             System.out.println(p);
         }
-
-//        List<Person> nicChildren = familyTree.getChildren(nic);
-//        for (Person child : nicChildren) {
+//        List<model.Person> nicChildren = familyTree.getChildren(nic);
+//        for (model.Person child : nicChildren) {
 //            System.out.println("Nic's child: " + child.getName());
 //        }
-//        List<Person> sergChildren = familyTree.getChildren(serg);
-//        for (Person child : sergChildren) {
+//        List<model.Person> sergChildren = familyTree.getChildren(serg);
+//        for (model.Person child : sergChildren) {
 //            System.out.println("Serg's child: " + child.getName());
 //        }
-//        List<Person> maxChildren = familyTree.getChildren(max);
-//        for (Person child : maxChildren) {
+//        List<model.Person> maxChildren = familyTree.getChildren(max);
+//        for (model.Person child : maxChildren) {
 //            System.out.println("Max's child: " + child.getName());
 //        }
-//        List<Person> sergParents = new ArrayList<>();
-//        sergParents.add((Person) serg.getMother());
-//        sergParents.add((Person) serg.getFather());
-//        for (Person child : sergParents) {
+//        List<model.Person> sergParents = new ArrayList<>();
+//        sergParents.add((model.Person) serg.getMother());
+//        sergParents.add((model.Person) serg.getFather());
+//        for (model.Person child : sergParents) {
 //            System.out.println("Serg's parents: " + child.getName());
 //        }
         // Выводим всех детей и родителей с помощью методов
@@ -68,6 +69,19 @@ public class Main {
         printChildren(familyTree, serg);
         printChildren(familyTree, max);
         printParents(serg);
+
+// Сортируем по имени
+        System.out.println("Сортировка по имени:");
+        familyTree.sortByName();
+        for (Person person : familyTree) {
+            System.out.println(person.getName() + " - " + person.getBirthYear());
+        }
+// Сортируем по дате рождения
+        System.out.println("\nСортировка по дате рождения:");
+        familyTree.sortByBirthYear();
+        for (Person person : familyTree) {
+            System.out.println(person.getName() + " - " + person.getBirthYear());
+        }
 
 /**
  * Создаем объект для работы с файлами
@@ -91,7 +105,7 @@ public class Main {
         }
 /**
  * Проверка после загрузки
-  */
+ */
         if (loadedFamilyTree != null) {
             for (Person p :
                     loadedFamilyTree.getPeople()) {
@@ -99,7 +113,6 @@ public class Main {
             }
         }
     }
-
 
     // Метод для установления родственных связей
     private static void establishRelations(Person nic, Person margo, Person serg,
