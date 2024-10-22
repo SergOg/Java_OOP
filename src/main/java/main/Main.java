@@ -96,7 +96,7 @@ public class Main {
 /**
  *Загружаем генеалогическое древо из файла
  */
-        FamilyTree loadedFamilyTree = null;
+        FamilyTree<Person> loadedFamilyTree = null;
         try {
             loadedFamilyTree = fileOps.loadFromFile("familyTree.dat");
             System.out.println("Family tree loaded from file.");
@@ -107,7 +107,7 @@ public class Main {
  * Проверка после загрузки
  */
         if (loadedFamilyTree != null) {
-            for (Object p :
+            for (Person p :
                     loadedFamilyTree.getPeople()) {
                 System.out.println(p);
             }
