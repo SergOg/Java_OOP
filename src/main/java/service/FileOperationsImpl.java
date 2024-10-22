@@ -5,10 +5,10 @@ import service.FileOperations;
 
 import java.io.*;
 
-public class FileOperationsImpl implements FileOperations {
+public class FileOperationsImpl<T> implements FileOperations<T> {
 
     @Override
-    public void saveToFile(FamilyTree familyTree, String fileName) throws IOException {
+    public void saveToFile(FamilyTree<T> familyTree, String fileName) throws IOException {
 /**
  *Сериализация в файл с помощью класса ObjectOutputStream
  */
@@ -18,12 +18,12 @@ public class FileOperationsImpl implements FileOperations {
     }
 
     @Override
-    public FamilyTree loadFromFile(String fileName) throws IOException, ClassNotFoundException {
+    public FamilyTree<T> loadFromFile(String fileName) throws IOException, ClassNotFoundException {
 /**
  *Востановление из файла с помощью класса ObjectInputStream
  */
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
-            return (FamilyTree) ois.readObject();
+            return (FamilyTree<T>) ois.readObject();
         }
     }
 }

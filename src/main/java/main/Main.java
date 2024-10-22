@@ -11,7 +11,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        FamilyTree familyTree = new FamilyTree();
+        FamilyTree<Person> familyTree = new FamilyTree<Person>();
         Person nic = new Person("Nic", 1928);
         Person margo = new Person("Margo", 1937);
         Person max = new Person("Max", 1998);
@@ -40,7 +40,7 @@ public class Main {
 //        familyTree.addPerson(mary);
 //        familyTree.addPerson(tema);
 
-        ///System.out.println(familyTree.findPersonByName("Nic"));
+        System.out.println(familyTree.findPersonByName("Nic"));
 
         for (Person p :
                 familyTree.getPeople()) {
@@ -107,7 +107,7 @@ public class Main {
  * Проверка после загрузки
  */
         if (loadedFamilyTree != null) {
-            for (Person p :
+            for (Object p :
                     loadedFamilyTree.getPeople()) {
                 System.out.println(p);
             }
