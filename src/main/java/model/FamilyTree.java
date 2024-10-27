@@ -8,26 +8,30 @@ import java.util.*;
  */
 public class FamilyTree<T> implements Serializable, Iterable<T> {
 
-    private List<T> people;
+    private List<Person> people;
     private static final long serialVersionUID = 1L;
 
     public FamilyTree() {
         this.people = new ArrayList<>();
     }
 
-    public void addPerson(T... person) {
+    public void addPerson(Person... person) {
         this.people.addAll(Arrays.asList(person));
     }
+    public void addPerson1(String name, int age){
+        Person person = new Person(name, age);
+        this.people.add(person);
+    }
 
-    public List<T> getPeople() {
+    public List<Person> getPeople() {
         return people;
     }
 
     /**
      * поможет находить человека по имени
      */
-    public T findPersonByName(String name) {
-        for (T p :
+    public Person findPersonByName(String name) {
+        for (Person p :
                 people) {
             if (p.toString().equals(name))
                 return p;
@@ -46,7 +50,7 @@ public class FamilyTree<T> implements Serializable, Iterable<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return people.iterator();
+        return (Iterator<T>) people.iterator();
     }
 
     public void sortByName() {
