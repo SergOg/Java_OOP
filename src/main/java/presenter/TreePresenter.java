@@ -17,7 +17,7 @@ public class TreePresenter {
         this.view = view;
         this.familyTree = familyTree;
         this.fileOperations = fileOperations;
-        this.view.setPresenter(this);
+        //this.view.setPresenter(this);
     }
 
     public void addPerson1(String name, int age) {
@@ -59,10 +59,11 @@ public class TreePresenter {
         }
     }
 
-    public void choiceInput() {
-        while (true) {
-            view.displayMessage("Enter command (1 add, 2 list, 3 sortByName, 4 sortByBirthYear, 5 save, 6 load, 7 exit):");
-            String command = view.getUserInput();
+    public void handleCommand(String command) {
+    //public void choiceInput() {
+//        while (true) {
+//            view.displayMessage("Enter command (1 add, 2 list, 3 sortByName, 4 sortByBirthYear, 5 save, 6 load, 7 exit):");
+//            String command = view.getUserInput();
             switch (command) {
                 case "1":
                     view.displayMessage("Enter name:");
@@ -89,10 +90,11 @@ public class TreePresenter {
                     loadTree(view.getUserInput());
                     break;
                 case "7":
-                    return;
+                    //return;
+                    System.exit(0);
                 default:
                     view.displayMessage("Unknown command");
             }
-        }
+//        }
     }
 }

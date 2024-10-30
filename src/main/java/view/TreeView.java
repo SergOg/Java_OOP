@@ -5,9 +5,6 @@ import presenter.TreePresenter;
 
 import java.util.List;
 
-public interface TreeView {
-    void displayMessage(String message);
-    void displayPersons(List<Person> persons);
-    String getUserInput();
+public interface TreeView extends InputView, MessageView, PersonView{
     void setPresenter(TreePresenter presenter);
 }
