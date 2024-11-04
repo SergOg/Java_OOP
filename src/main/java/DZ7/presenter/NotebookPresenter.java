@@ -72,7 +72,6 @@ public class NotebookPresenter {
         }
     }
 
-    //    public void handleCommand(String command) {
     public void choiceInput() {
         while (true) {
             notebookView.showMessage("Enter command (1 add, 2 list, 3 sortByInfo, 4 sortByData, 5 forDay, 6 forWeek, 7 save, 8 load, 9 exit):");
