@@ -5,7 +5,7 @@ import model.Person;
 import presenter.CommandHandler;
 import presenter.TreePresenter;
 import service.FileOperationsImpl;
-import view.ConsoleTreeView;
+import familyTreeView.ConsoleTreeView;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package view;
+package familyTreeView;
 
 import model.Person;
 

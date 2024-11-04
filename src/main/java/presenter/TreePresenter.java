@@ -4,7 +4,7 @@ import model.FamilyTree;
 import model.Person;
 import service.FileOperations;
 import service.FileOperationsImpl;
-import view.TreeView;
+import familyTreeView.TreeView;
 
 import java.io.IOException;
 
@@ -60,41 +60,41 @@ public class TreePresenter {
     }
 
     public void handleCommand(String command) {
-    //public void choiceInput() {
+        //public void choiceInput() {
 //        while (true) {
 //            view.displayMessage("Enter command (1 add, 2 list, 3 sortByName, 4 sortByBirthYear, 5 save, 6 load, 7 exit):");
 //            String command = view.getUserInput();
-            switch (command) {
-                case "1":
-                    view.displayMessage("Enter name:");
-                    String name = view.getUserInput();
-                    view.displayMessage("Enter birth year:");
-                    int birthYear = Integer.parseInt(view.getUserInput());
-                    addPerson1(name, birthYear);
-                    break;
-                case "2":
-                    showAllPersons();
-                    break;
-                case "3":
-                    sortPersonsByName();
-                    break;
-                case "4":
-                    sortPersonsByBirthYear();
-                    break;
-                case "5":
-                    view.displayMessage("Enter file name:");
-                    saveTree(view.getUserInput());
-                    break;
-                case "6":
-                    view.displayMessage("Enter file name:");
-                    loadTree(view.getUserInput());
-                    break;
-                case "7":
-                    //return;
-                    System.exit(0);
-                default:
-                    view.displayMessage("Unknown command");
-            }
+        switch (command) {
+            case "1":
+                view.displayMessage("Enter name:");
+                String name = view.getUserInput();
+                view.displayMessage("Enter birth year:");
+                int birthYear = Integer.parseInt(view.getUserInput());
+                addPerson1(name, birthYear);
+                break;
+            case "2":
+                showAllPersons();
+                break;
+            case "3":
+                sortPersonsByName();
+                break;
+            case "4":
+                sortPersonsByBirthYear();
+                break;
+            case "5":
+                view.displayMessage("Enter file name:");
+                saveTree(view.getUserInput());
+                break;
+            case "6":
+                view.displayMessage("Enter file name:");
+                loadTree(view.getUserInput());
+                break;
+            case "7":
+                //return;
+                System.exit(0);
+            default:
+                view.displayMessage("Unknown command");
+        }
 //        }
     }
 }

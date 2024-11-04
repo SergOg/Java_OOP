@@ -1,6 +1,6 @@
 package presenter;
 
-import view.TreeView;
+import familyTreeView.TreeView;
 
 public class CommandHandler {
     private TreePresenter treePresenter;
