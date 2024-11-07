@@ -77,13 +77,4 @@ public class Notebook<T> implements Serializable, Iterable<T> {
             }
         }
     }
-
-    public Note findNoteByInfo(String info) {
-        for (Note n :
-                notes) {
-            if (n.toString().equals(info))
-                return n;
-        }
-        return null;
-    }
 }
